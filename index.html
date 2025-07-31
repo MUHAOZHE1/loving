@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致穆昊哲的宝宝大人 ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            font-family: 'Noto Sans SC', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* 背景装饰 */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* 开场动画 */
+        .welcome-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease-out;
+        }
+        
+        .welcome-hearts {
+            position: relative;
+            width: 300px;
+            height: 200px;
+        }
+        
+        .welcome-heart {
+            position: absolute;
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0;
+            animation: gatherHearts 3s ease-out forwards;
+        }
+        
+        .welcome-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            opacity: 0;
+            animation: fadeInText 2s ease-out 2s forwards;
+        }
+        
+        @keyframes gatherHearts {
+            0% {
+                opacity: 1;
+                transform: translate(var(--start-x), var(--start-y)) scale(0.5);
+            }
+            70% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+        
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 标题 */
+        .main-title {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 10px rgba(255,255,255,0.3); }
+            100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.6); }
+        }
+        
+        /* 音乐控制 */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        /* 主要功能区域 */
+        .main-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        /* 祝福按钮 */
+        .blessing-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .blessing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+        
+        .blessing-text {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #2d3436;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s ease;
+        }
+        
+        .blessing-text.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* 心愿盒 */
+        .wish-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ff9a9e;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .wish-input:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+        }
+        
+        .wish-submit {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, #74b9ff, #a29bfe);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wish-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+        }
+        
+        /* 游戏区域 */
+        .game-area {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px dashed #ff9a9e;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: #ff6b6b;
+            cursor: pointer;
+            user-select: none;
+            animation: floatHeart 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-heart:hover {
+            transform: scale(1.2);
+        }
+        
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(5deg); }
+            75% { transform: translateY(10px) rotate(-5deg); }
+        }
+        
+        .game-score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        /* 画廊 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* 模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ff6b6b;
+        }
+        
+        /* 心愿展示区域 */
+        .wishes-display {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .wish-item {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+            animation: slideInLeft 0.5s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* 底部版权 */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .welcome-text {
+                font-size: 1.8rem;
+            }
+            
+            .main-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .music-control {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* 特效动画 */
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 1rem;
+            color: #ffd93d;
+            animation: sparkleAnim 1s ease-out forwards;
+        }
+        
+        @keyframes sparkleAnim {
+            0% {
+                opacity: 1;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg);
+            }
+        }
+        
+        .confetti {
+            position: absolute;
+            pointer-events: none;
+            animation: confettiAnim 2s ease-out forwards;
+        }
+        
+        @keyframes confettiAnim {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100px) scale(0.5) rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 开场动画 -->
+    <div class="welcome-animation" id="welcomeAnimation">
+        <div class="welcome-hearts" id="welcomeHearts">
+            <div class="welcome-text">亲爱的，想你啦～ ❤️</div>
+        </div>
+    </div>
+    
+    <!-- 背景装饰 -->
+    <div class="bg-decoration" id="bgDecoration"></div>
+    
+    <!-- 音乐控制 -->
+    <button class="music-control" id="musicControl">🎵</button>
+    
+    <!-- 主容器 -->
+    <div class="container" id="mainContainer">
+        <h1 class="main-title">致穆昊哲的宝宝大人</h1>
+        
+        <div class="main-section">
+            <!-- 随机祝福卡片 -->
+            <div class="card">
+                <h2 class="card-title">✨ 甜蜜祝福 ✨</h2>
+                <button class="blessing-btn" id="blessingBtn">给宝宝大人一句祝福</button>
+                <div class="blessing-text" id="blessingText">点击按钮获取专属祝福～</div>
+            </div>
+            
+            <!-- 心愿收集盒 -->
+            <div class="card">
+                <h2 class="card-title">💝 心愿收集盒 💝</h2>
+                <input type="text" class="wish-input" id="wishInput" placeholder="想对宝宝大人说的话…" maxlength="100">
+                <button class="wish-submit" id="wishSubmit">许下心愿</button>
+            </div>
+            
+            <!-- 趣味小游戏 -->
+            <div class="card">
+                <h2 class="card-title">💖 爱心收集游戏 💖</h2>
+                <div class="game-area" id="gameArea">
+                    <div class="game-score" id="gameScore">已收集: 0/10</div>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; color: #666;">点击爱心收集爱意，满10个有惊喜哦～</p>
+            </div>
+        </div>
+        
+        <!-- 时光回顾画廊 -->
+        <div class="card">
+            <h2 class="card-title">🌟 我们的美好时光 🌟</h2>
+            <div class="gallery" id="gallery">
+                <div class="gallery-item" onclick="openModal(0)">📷</div>
+                <div class="gallery-item" onclick="openModal(1)">💕</div>
+                <div class="gallery-item" onclick="openModal(2)">🎉</div>
+                <div class="gallery-item" onclick="openModal(3)">🌸</div>
+                <div class="gallery-item" onclick="openModal(4)">✨</div>
+            </div>
+        </div>
+        
+        <!-- 心愿展示区域 -->
+        <div class="wishes-display" id="wishesDisplay" style="display: none;">
+            <h2 class="card-title">💌 我们的心愿墙 💌</h2>
+            <div id="wishesContainer"></div>
+        </div>
+    </div>
+    
+    <!-- 模态框 -->
+    <div class="modal" id="photoModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    
+    <!-- 底部版权 -->
+    <div class="footer">
+        此页面献给最可爱的你 ❤️
+    </div>
+    
+    <!-- 隐藏的音频元素 -->
+    <audio id="bgMusic" loop>
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmcfCiqG0fDKdSYEKIHI8diJOAcZZ7zl4Z1NFQ1Opd3rsnAhDjWL0e/AbiEhUejd5phmPzw9+Oyu1V0bU0e6ZK2O6J9cSHjKgCBHj8lrYkV3xYs5bYq2HvKxPo19pIwVgGJ8zXRSZoNjbY1nq2w5Jy59nL6tOVY2j7WY" type="audio/wav">
+    </audio>
+    
+    <script>
+        // 全局变量
+        let gameScore = 0;
+        let wishes = [];
+        let isGameActive = false;
+        let musicPlaying = false;
+        
+        // 祝福语数组
+        const blessings = [
+            "今天的你最美，明天的你会更美！💕",
+            "爱你的理由第372种：你总能让我笑 😊",
+            "你是我见过最可爱的宝宝大人～ 🥰",
+            "想把世界上最好的都给你！🌟",
+            "你的笑容是我最大的幸福 😍",
+            "每天醒来第一个想到的就是你 💖",
+            "你就是我的小太阳，温暖着我的心 ☀️",
+            "和你在一起的每一天都是情人节 💝",
+            "你不仅是我的爱人，更是我最好的朋友 👫",
+            "想和你一起慢慢变老，看遍世间风景 🌈",
+            "你的小脾气我都觉得可爱得不行 😘",
+            "感谢命运让我遇见了你这个小可爱 🍀"
+        ];
+        
+        // 特别祝福（游戏奖励）
+        const specialBlessings = [
+            "🎉 哇！你收集满了！宝宝大人真棒！你值得拥有所有的爱与美好！",
+            "✨ 恭喜解锁特别祝福！你是我心中永远的小公主！",
+            "🌟 太厉害了！每一颗爱心都代表我对你的一份爱意！",
+            "💖 你是最棒的宝宝大人！让我们一起创造更多美好回忆吧！"
+        ];
+        
+        // 画廊数据
+        const galleryData = [
+            {
+                emoji: "📷",
+                title: "第一次相遇",
+                description: "那一天，阳光正好，你正好经过我的世界，从此我的世界有了颜色。"
+            },
+            {
+                emoji: "💕",
+                title: "第一次约会",
+                description: "紧张得手心出汗，但看到你的笑容，整个世界都安静下来了。"
+            },
+            {
+                emoji: "🎉",
+                title: "在一起的日子",
+                description: "每一个平凡的日子，因为有你而变得特别珍贵。"
+            },
+            {
+                emoji: "🌸",
+                title: "春天的回忆",
+                description: "樱花飘落的季节，我们许下了永远在一起的承诺。"
+            },
+            {
+                emoji: "✨",
+                title: "未来的憧憬",
+                description: "想和你一起看遍四季，走过人生的每一个重要时刻。"
+            }
+        ];
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            initWelcomeAnimation();
+            initBackgroundDecoration();
+            initEventListeners();
+            initGame();
+        });
+        
+        // 初始化开场动画
+        function initWelcomeAnimation() {
+            const welcomeHearts = document.getElementById('welcomeHearts');
+            
+            // 创建聚拢的心形
+            for (let i = 0; i < 12; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'welcome-heart';
+                heart.innerHTML = '❤️';
+                
+                const angle = (i / 12) * 2 * Math.PI;
+                const radius = 120;
+                const startX = Math.cos(angle) * radius;
+                const startY = Math.sin(angle) * radius;
+                
+                heart.style.setProperty('--start-x', startX + 'px');
+                heart.style.setProperty('--start-y', startY + 'px');
+                heart.style.animationDelay = (i * 0.1) + 's';
+                
+                welcomeHearts.appendChild(heart);
+            }
+            
+            // 4秒后隐藏开场动画，显示主内容
+            setTimeout(() => {
+                document.getElementById('welcomeAnimation').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('welcomeAnimation').style.display = 'none';
+                    document.getElementById('mainContainer').classList.add('visible');
+                }, 1000);
+            }, 4000);
+        }
+        
+        // 初始化背景装饰
+        function initBackgroundDecoration() {
+            const bgDecoration = document.getElementById('bgDecoration');
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.innerHTML = '💕';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+                bgDecoration.appendChild(heart);
+            }
+        }
+        
+        // 初始化事件监听器
+        function initEventListeners() {
+            // 祝福按钮
+            document.getElementById('blessingBtn').addEventListener('click', showRandomBlessing);
+            
+            // 心愿提交
+            document.getElementById('wishSubmit').addEventListener('click', submitWish);
+            document.getElementById('wishInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitWish();
+                }
+            });
+            
+            // 音乐控制
+            document.getElementById('musicControl').addEventListener('click', toggleMusic);
+        }
+        
+        // 显示随机祝福
+        function showRandomBlessing() {
+            const blessingText = document.getElementById('blessingText');
+            const randomBlessing = blessings[Math.floor(Math.random() * blessings.length)];
+            
+            blessingText.classList.remove('show');
+            
+            setTimeout(() => {
+                blessingText.textContent = randomBlessing;
+                blessingText.classList.add('show');
+                createSparkleEffect(document.getElementById('blessingBtn'));
+            }, 200);
+        }
+        
+        // 提交心愿
+        function submitWish() {
+            const wishInput = document.getElementById('wishInput');
+            const wishText = wishInput.value.trim();
+            
+            if (wishText) {
+                wishes.push({
+                    text: wishText,
+                    timestamp: new Date().toLocaleString()
+                });
+                
+                wishInput.value = '';
+                updateWishesDisplay();
+                createConfettiEffect(document.getElementById('wishSubmit'));
+            }
+        }
+        
+        // 更新心愿显示
+        function updateWishesDisplay() {
+            const wishesDisplay = document.getElementById('wishesDisplay');
+            const wishesContainer = document.getElementById('wishesContainer');
+            
+            if (wishes.length > 0) {
+                wishesDisplay.style.display = 'block';
+                wishesContainer.innerHTML = '';
+                
+                wishes.forEach((wish, index) => {
+                    const wishItem = document.createElement('div');
+                    wishItem.className = 'wish-item';
+                    wishItem.innerHTML = `
+                        <p>${wish.text}</p>
+                        <small style="color: #666; font-size: 0.8rem;">💝 ${wish.timestamp}</small>
+                    `;
+                    wishesContainer.appendChild(wishItem);
+                });
+            }
+        }
+        
+        // 初始化游戏
+        function initGame() {
+            const gameArea = document.getElementById('gameArea');
+            isGameActive = true;
+            
+            // 创建漂浮的心形
+            function createFloatingHeart() {
+                if (!isGameActive) return;
+                
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * (gameArea.offsetWidth - 40) + 'px';
+                heart.style.top = Math.random() * (gameArea.offsetHeight - 40) + 'px';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                
+                heart.addEventListener('click', function() {
+                    collectHeart(heart);
+                });
+                
+                gameArea.appendChild(heart);
+                
+                // 10秒后自动移除未点击的心形
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.remove();
+                    }
+                }, 10000);
+            }
+            
+            // 定期创建心形
+            setInterval(createFloatingHeart, 2000);
+            
+            // 初始创建几个心形
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createFloatingHeart, i * 500);
+            }
+        }
+        
+        // 收集心形
+        function collectHeart(heartElement) {
+            gameScore++;
+            updateGameScore();
+            
+            // 创建收集效果
+            heartElement.style.transform = 'scale(2)';
+            heartElement.style.opacity = '0';
+            
+            createSparkleEffect(heartElement);
+            
+            setTimeout(() => {
+                heartElement.remove();
+            }, 300);
+            
+            // 检查是否达到目标
+            if (gameScore >= 10 && gameScore % 10 === 0) {
+                showSpecialBlessing();
+                gameScore = 0; // 重置分数
+                updateGameScore();
+            }
+        }
+        
+        // 更新游戏分数
+        function updateGameScore() {
+            document.getElementById('gameScore').textContent = `已收集: ${gameScore}/10`;
+        }
+        
+        // 显示特别祝福
+        function showSpecialBlessing() {
+            const blessingText = document.getElementById('blessingText');
+            const specialBlessing = specialBlessings[Math.floor(Math.random() * specialBlessings.length)];
+            
+            blessingText.classList.remove('show');
+            
+            setTimeout(() => {
+                blessingText.textContent = specialBlessing;
+                blessingText.classList.add('show');
+                createConfettiEffect(document.getElementById('gameArea'));
+            }, 200);
+        }
+        
+        // 音乐控制
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const musicControl = document.getElementById('musicControl');
+            
+            if (musicPlaying) {
+                music.pause();
+                musicControl.textContent = '🎵';
+                musicPlaying = false;
+            } else {
+                music.play().catch(e => {
+                    console.log('音频播放需要用户交互');
+                });
+                musicControl.textContent = '🔇';
+                musicPlaying = true;
+            }
+        }
+        
+        // 打开模态框
+        function openModal(index) {
+            const modal = document.getElementById('photoModal');
+            const modalContent = document.getElementById('modalContent');
+            const data = galleryData[index];
+            
+            modalContent.innerHTML = `
+                <div style="font-size: 4rem; margin-bottom: 1rem;">${data.emoji}</div>
+                <h3 style="color: #ff6b6b; margin-bottom: 1rem; font-family: 'Dancing Script', cursive;">${data.title}</h3>
+                <p style="color: #666; line-height: 1.6;">${data.description}</p>
+            `;
+            
+            modal.style.display = 'block';
+        }
+        
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('photoModal').style.display = 'none';
+        }
+        
+        // 点击模态框外部关闭
+        document.getElementById('photoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // 创建星光特效
+        function createSparkleEffect(element) {
+            const rect = element.getBoundingClientRect();
+            
+            for (let i = 0; i < 6; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.innerHTML = '✨';
+                sparkle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+                sparkle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+            }
+        }
+        
+        // 创建彩带特效
+        function createConfettiEffect(element) {
+            const rect = element.getBoundingClientRect();
+            const colors = ['#ff6b6b', '#ffd93d', '#6bcf7f', '#4ecdc4', '#a8e6cf'];
+            
+            for (let i = 0; i < 15; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.position = 'absolute';
+                confetti.style.left = (rect.left + rect.width / 2) + 'px';
+                confetti.style.top = rect.top + 'px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>
